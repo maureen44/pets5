@@ -1,0 +1,19 @@
+{
+  "name": "/328/pets5",
+  "authors": [
+    {
+      "name": "Maureen Kariuki",
+      "email": "mkariuki@mail.greenriver.edu"
+    },
+    {
+      "name": "Elijah Maret",
+      "email": "emaret2@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["classes/"]
+  }
+}
