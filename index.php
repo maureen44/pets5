@@ -122,5 +122,10 @@ $f3->route("GET|POST /results", function() {
     echo $views->render('views/results.html');
 });
 
+//Define route show
+$f3->route("GET|POST /show", function($f3) {
+    $GLOBALS['controller']->show();
+});
+
 //Run f3
 $f3->run();
