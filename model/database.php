@@ -18,5 +18,22 @@ class Database
         }
     }
 
+    function allPets()
+    {
+        //1. Define the query
+        $sql = "SELECT * FROM pets5
+                ORDER BY name, color, type";
 
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameter
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Get the result
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
