@@ -1,5 +1,4 @@
 <?php
-
 // Turn on error reporting -- this is critical!
 ini_set('display_errors',1);
 error_reporting(E_ALL);
@@ -18,6 +17,12 @@ $f3->set('DEBUG', 3);
 
 //define an array of colors
 $f3->set('colors', array('pink', 'green', 'blue'));
+
+//define controller
+$controller = new Pets5Controller($f3);
+
+// define database
+$db = new Pets5Database();
 
 //Define a default route
 $f3->route("GET /", function (){
@@ -115,6 +120,15 @@ $f3->route("GET|POST /order2", function($f3) {
     echo $views->render('views/form2.html');
 
 });
+//Define route show
+$f3->route("GET /show", function($f3) {
+    global $controller;
+    global $db;
+
+
+    $controller->show($db);
+   // $GLOBALS['controller']->show();
+});
 
 $f3->route("GET|POST /results", function() {
     //var_dump($_POST);
@@ -122,10 +136,7 @@ $f3->route("GET|POST /results", function() {
     echo $views->render('views/results.html');
 });
 
-//Define route show
-$f3->route("GET|POST /show", function($f3) {
-    $GLOBALS['controller']->show();
-});
 
+//session_destroy();
 //Run f3
 $f3->run();

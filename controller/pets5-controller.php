@@ -9,11 +9,11 @@ class Pets5Controller
         $this->_f3 = $f3;
     }
 
-    public function show()
+    public function show($db)
     {
-        $pets5 = $GLOBALS['db']->AllPets();
 
-        $this->_f3->set('pets5', $pets5);
+        //print_r($db->allPets());
+        $this->_f3->set('pets5', $db->allPets());
 
         $template = new Template();
         echo $template->render('views/display-pets.html');

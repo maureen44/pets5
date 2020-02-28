@@ -1,7 +1,7 @@
 <?php
 require_once ("config-pets.php");
 
-class Database
+class Pets5Database
 {
     //Connection object or PDO object
     private $_dbh;
@@ -35,5 +35,25 @@ class Database
         //5. Get the result
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
+    }
+    function writePet($pets5) {
+        //1. Define the query
+        $sql = "INSERT INTO pets5(name, color, type)
+                VALUES (:name, :color, :type)";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameter
+        $statement->bindParam(':name', $pets5->getName());
+        $statement->bindParam(':color', $pets5->getColor());
+        $statement->bindParam(':type', $pets5->getType());
+
+
+        //4. Execute the statement
+        $statement->execute();
+
+        //5. Get the result
+        $id = $this->_dbh->lastInsertId();
     }
 }
