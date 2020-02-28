@@ -83,9 +83,6 @@ $f3->route("GET|POST /order", function($f3) {
             }
             $_SESSION['animal'] = $animal;
             $_SESSION['pet1'] = $pet1;
-            $_SESSION['dog1'] = $dog1;
-            $_SESSION['cat1'] = $cat1;
-            $_SESSION['bird'] = $bird1;
 
             $f3->reroute('/order2');
         }else{
@@ -131,7 +128,10 @@ $f3->route("GET /show", function($f3) {
 });
 
 $f3->route("GET|POST /results", function() {
+
     //var_dump($_POST);
+    global $db;
+    $db->writePet($_SESSION['pet1']);
     $views = new Template();
     echo $views->render('views/results.html');
 });
